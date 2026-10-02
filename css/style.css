@@ -1,0 +1,363 @@
+/* ===== Colours (baby blue theme) ===== */
+:root {
+  --page-bg: #f4faff;
+  --section-alt: #e3f1fc;
+  --card-bg: #ffffff;
+  --baby-blue: #bfe0f8;
+  --bubble: rgba(255, 255, 255, 0.45);
+  --accent: #245d91;
+  --accent-text: #ffffff;
+  --text: #1f3550;
+  --border: #b7d6ee;
+
+  /* make Bootstrap use my colours */
+  --bs-body-bg: var(--card-bg);
+  --bs-body-color: var(--text);
+  --bs-border-color: var(--border);
+}
+
+/* colours for dark mode */
+[data-bs-theme="dark"] {
+  --page-bg: #0f1c2e;
+  --section-alt: #14253b;
+  --card-bg: #1a2e48;
+  --baby-blue: #2c5078;
+  --bubble: rgba(255, 255, 255, 0.07);
+  --accent: #a6d4f7;
+  --accent-text: #0f1c2e;
+  --text: #e4f1fc;
+  --border: #2f4b6b;
+}
+
+/* ===== General ===== */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: var(--page-bg);
+}
+
+h1,
+h2,
+.navbar-brand {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--text);
+}
+
+section {
+  padding: 60px 0;
+  scroll-margin-top: 55px; /* so the sticky navbar does not hide the heading */
+}
+
+.section-alt {
+  background-color: var(--section-alt);
+}
+
+/* heading with a highlighter effect behind the text */
+.section-title {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 0 8px;
+  background: linear-gradient(transparent 55%, var(--baby-blue) 55%);
+}
+
+.sub-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 40px 0 15px;
+}
+
+/* ===== Buttons (Bootstrap buttons with my colours) ===== */
+.btn-blue {
+  --bs-btn-color: var(--accent-text);
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: var(--accent-text);
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: var(--accent-text);
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+  --bs-btn-focus-shadow-rgb: 36, 93, 145;
+}
+
+.btn-blue:hover {
+  opacity: 0.85;
+}
+
+.btn-outline-blue {
+  --bs-btn-color: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: var(--accent-text);
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: var(--accent-text);
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+  --bs-btn-focus-shadow-rgb: 36, 93, 145;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* ===== Home ===== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--baby-blue);
+  border-radius: 0 0 40px 40px;
+}
+
+/* two decorative circles in the background */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--bubble);
+}
+
+.hero::before {
+  width: 260px;
+  height: 260px;
+  top: -90px;
+  left: -80px;
+}
+
+.hero::after {
+  width: 160px;
+  height: 160px;
+  bottom: -60px;
+  right: 8%;
+}
+
+.hero-content {
+  position: relative; /* keeps the content above the circles */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+}
+
+/* chart card */
+.stats-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(31, 53, 80, 0.12);
+}
+
+.stats-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 25px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.stat-bar {
+  height: 14px;
+  border-radius: 10px;
+  background-color: var(--section-alt);
+}
+
+.stat-fill {
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--accent);
+  animation: grow 1s ease-out;
+}
+
+.stat-row:hover .stat-fill {
+  opacity: 0.7;
+}
+
+.stat-value {
+  font-weight: 600;
+  text-align: right;
+}
+
+/* bars grow from zero when the page loads */
+@keyframes grow {
+  from {
+    width: 0;
+  }
+}
+
+/* ===== Boxes (used for steps, skills and the form) ===== */
+.box-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.box {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* ===== About: steps ===== */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.steps strong {
+  display: block;
+}
+
+.step-number {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 50%;
+  background-color: var(--baby-blue);
+}
+
+/* ===== Skills ===== */
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chip {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  background-color: var(--baby-blue);
+}
+
+/* ===== Projects ===== */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.project-card {
+  border-color: var(--border);
+  border-radius: 15px;
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== Contact ===== */
+.contact-list li {
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+
+#formResult {
+  margin-top: 15px;
+}
+
+/* ===== Footer ===== */
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border);
+}
+
+/* ===== Responsive (mobile first) ===== */
+
+/* tablets */
+@media (min-width: 576px) {
+  .box-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* laptops and bigger screens */
+@media (min-width: 992px) {
+  section {
+    padding: 80px 0;
+  }
+
+  .hero-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-text {
+    max-width: 55%;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .stats-card {
+    width: 400px;
+  }
+
+  .box-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* no animation for people who turned motion off */
+@media (prefers-reduced-motion: reduce) {
+  .stat-fill {
+    animation: none;
+  }
+
+  .project-card {
+    transition: none;
+  }
+}
